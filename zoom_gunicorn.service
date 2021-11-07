@@ -1,0 +1,11 @@
+[program:zoom_gunicorn]
+user=tausif
+environment=BASE_DIR=/home/tausif/zoom
+directory=/home/tausif/zoom
+command=/home/tausif/miniconda3/envs/venv/bin/gunicorn --workers=8 --bind=0.0.0.0:8786 --timeout=120 --max-requests=2048 --limit-request-line=0 --max-requests-jitter=64 --log-level debug --env=DJANGO_SETTINGS_MODULE=zoom.settings.development --chdir=/home/tausif/zoom zoom.wsgi:application
+stopsignail=QUIT
+autostart=true
+autorestart=true
+logfile=/tmp/zoom_gunicorn.log
+stdout_logfile=/tmp/zoom_gunicorn.log
+stderr_logfile=/tmp/zoom_gunicorn.log
