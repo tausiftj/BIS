@@ -2,7 +2,7 @@
 settings required for development environment
 """
 
-from api.settings.base import *
+from zoom.settings.base import *
 
 DEBUG = True
 

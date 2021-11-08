@@ -10,16 +10,6 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__fil
 env = environ.Env(DEBUG=(bool, True))  # set default values and casting
 environ.Env.read_env()  # reading .env file
 
-
-def env(env_variable, default_value=None):
-    try:
-        return os.environ[env_variable]
-    except KeyError:
-        if default_value is not None:
-            return default_value
-        error_msg = 'Set the {} environment variable'.format(env_variable)
-        raise ImproperlyConfigured(error_msg)
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
@@ -79,10 +69,10 @@ WSGI_APPLICATION = "sian.wsgi.application"
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': env('DATABASE_NAME'),
-        'USER': env('DATABASE_USER'),
-        'PASSWORD': env('DATABASE_PASSWORD'),
-        'HOST': env('DATABASE_HOST'),
+        'NAME': os.environ['DATABASE_NAME'],
+        'USER': os.environ['DATABASE_USER'],
+        'PASSWORD': os.environ['DATABASE_PASSWORD'],
+        'HOST': os.environ['DATABASE_HOST'],
     }
 }
 

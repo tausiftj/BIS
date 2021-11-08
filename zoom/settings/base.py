@@ -27,23 +27,12 @@ SECRET_KEY = '3x91*+wefrtw2$)%350gbqsjx--n+in3x&j%-u!q6_*&c^*vpu'
 
 # Application definition
 
-INSTALLED_APPS.extend[
+INSTALLED_APPS.extend([
     'rest_framework',
     'rest_framework.authtoken',
     'api',
     'drf_yasg',
-]
-
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': env('DATABASE_NAME'),
-        'USER': env('DATABASE_USER'),
-        'PASSWORD': env('DATABASE_PASSWORD'),
-        'HOST': env('DATABASE_HOST'),
-    }
-}
+])
 
 
 # Internationalization

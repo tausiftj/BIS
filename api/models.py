@@ -41,7 +41,7 @@ class CarModel(BaseModel):
         ordering = ['brand', 'name']
     
     def __str__(self):
-        return self.brand + '->' + self.name
+        return self.brand.name + '->' + self.name
 
 
 class CarRegistrationNumber(BaseModel):
