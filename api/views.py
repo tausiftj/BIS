@@ -50,7 +50,9 @@ class UserCreateView(CreateModelMixin, GenericViewSet):
     serializer_class = UserSerializer
 
     def perform_create(self, serializer):
-        serializer.save()
+        obj = serializer.save()
+        obj.set_password(serializer.validated_data.get('password'))
+        obj.save()
 
 
 class CarBrandViewSet(ModelViewSet):
@@ -193,4 +195,14 @@ class LoginAPIView(APIView):
 
         if error:
             raise serializers.ValidationError(error)
-        return Response(status=200)
+        
+        Token.objects.filter(user=user).delete()
+        token_obj = Token.objects.create(user=user)
+        access_token = token_obj.key
+        response = {
+            "user": user.id,
+            "Name": user.first_name,
+            "username": user.username,
+            "user_token": access_token,
+        }
+        return Response(response,status=200)

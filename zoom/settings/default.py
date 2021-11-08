@@ -60,7 +60,7 @@ TEMPLATES = [
     }
 ]
 
-WSGI_APPLICATION = "sian.wsgi.application"
+WSGI_APPLICATION = "zoom.wsgi.application"
 
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
